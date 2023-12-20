@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+   echo "No argument supplied. You have to supply a namespace you wish to terminate as argument"
+   exit 1
+fi
+if [ "x--yes-i-really-mean-itx" != "x$2x" ]; then
+  echo "Doing nothing... use --yes-i-really-mean-it if you want to run the script"
+  exit 1
+fi
+kubectl get namespace ${1} -o json \
+  | tr -d "\n" | sed "s/\"finalizers\": \[[^]]\+\]/\"finalizers\": []/" \
+  | kubectl replace --raw /api/v1/namespaces/${1}/finalize -f -

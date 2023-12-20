@@ -1,0 +1,2 @@
+#!/bin/sh
+kubectl get pods -o custom-columns="NAMESPACE:.metadata.namespace,POD:.metadata.name,CONTAINER:.spec.containers[*].name,containerIds:.status.containerStatuses[*].containerID" "$@"

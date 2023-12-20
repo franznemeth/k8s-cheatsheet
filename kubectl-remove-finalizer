@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Removes finalizers from resources
+patch=$(echo -e 'metadata:\n  finalizers: null')
+kubectl patch --patch "${patch}" --type=merge $@

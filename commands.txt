@@ -1,0 +1,5 @@
+kubectl get pods --all-namespaces --field-selector spec.nodeName=
+git config --global push.autoSetupRemote true
+select pg_size_pretty(pg_database_size('db_name'));
+stern
+kubectx/kubens
