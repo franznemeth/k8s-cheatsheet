@@ -1,0 +1,4 @@
+# This is helpful if you're trying to remove a helm chart which contains deprecated APIs and is therefore unable to be removed
+helm plugin install https://github.com/helm/helm-mapkubeapis
+helm mapkubeapis releasename
+helm delete releasename
